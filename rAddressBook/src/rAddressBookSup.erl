@@ -10,7 +10,7 @@
 -author("tom").
 
 %% APIcrashcrash
--export([]).
+-export([loop/0, init/0]).
 -export([start/0]).
 
 start() ->
@@ -24,7 +24,10 @@ init() ->
 
 loop() ->
   receive
-    {'EXIT', Module , Reason } -> io:format("Removed"), rAddressBook:start_link(), loop()
+    {'EXIT', _ , __ } ->
+      io:format("Removed    "),
+      rAddressBook:start_link(),
+      loop()
   end.
 
 
