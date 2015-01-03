@@ -37,3 +37,20 @@ removeContactFail_test() ->  {error,_} = addressBook:removeContact("kot","mac",[
 
 removePhone_test() -> [{person,{fullname,"tpm","kod"},["13"],[]}] = addressBook:removePhone("12",[{person,{fullname,"tpm","kod"},["12","13"],[]}]).
 removePhoneFail_test() -> {error,_} = addressBook:removePhone("12",[]).
+
+getPhones_test() -> ["1741"] = addressBook:getPhones("tom","b",[{person,{fullname,"tom","b"},["1741"],[]}]).
+getPhones1_test() -> [] = addressBook:getPhones("tom","b",[{person,{fullname,"tom","b"},[],[]}]).
+getPhonesFail_test() -> {error, _ } = addressBook:getPhones("tom","ba",[{person,{fullname,"tom","b"},["13"],[]}]).
+
+getEmails_test() -> ["ad@da.com"] = addressBook:getEmails("tom","b",[{person,{fullname,"tom","b"},["1741"],["ad@da.com"]}]).
+getEmails1_test() -> [] = addressBook:getEmails("tom","b",[{person,{fullname,"tom","b"},[],[]}]).
+getEmailsFail_test() -> {error, _ } = addressBook:getEmails("tom","ba",[{person,{fullname,"tom","b"},["13"],["af"]}]).
+
+findByPhone_test() -> "tom b" = addressBook:findByPhone("1741",[{person,{fullname,"tom","b"},["1741"],["ton@com"]}]).
+findByPhoneFail_test() ->{error, _} =  addressBook:findByPhone("174",[{person,{fullname,"tom","b"},["1741"],["ton@com"]}]).
+
+findByEmail_test() -> "tom b" = addressBook:findByEmail("ton@com",[{person,{fullname,"tom","b"},["1741"],["ton@com"]}]).
+findByEmailFail_test() ->{error, _} =  addressBook:findByEmail("tadac",[{person,{fullname,"tom","b"},["1741"],["ton@com"]}]).
+
+findInAny_test() -> [{person,{fullname,"tom","b"},["1741"],["ton@com"]}] = addressBook:findInAny("17",[{person,{fullname,"tom","b"},["1741"],["ton@com"]}]).
+findInAny_fail() -> {error, _ } = addressBook:findInAny("11",[{person,{fullname,"tom","b"},["1741"],["ton@com"]}]).

@@ -3,9 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Erlang.iml" filepath="$PROJECT_DIR$/Erlang.iml" />
-      <module fileurl="file://$PROJECT_DIR$/adressBook/addressBook.iml" filepath="$PROJECT_DIR$/adressBook/addressBook.iml" />
+      <module fileurl="file://$PROJECT_DIR$/addressBook/addressBook.iml" filepath="$PROJECT_DIR$/addressBook/addressBook.iml" />
       <module fileurl="file://$PROJECT_DIR$/myLists/myLists.iml" filepath="$PROJECT_DIR$/myLists/myLists.iml" />
-      <module fileurl="file://$PROJECT_DIR$/rAdressBook/rAddressBook.iml" filepath="$PROJECT_DIR$/rAdressBook/rAddressBook.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rAddressBook/rAddressBook.iml" filepath="$PROJECT_DIR$/rAddressBook/rAddressBook.iml" />
     </modules>
   </component>
 </project>
