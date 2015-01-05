@@ -106,30 +106,3 @@ findInAny(Pattern,[H | T]) ->
     false -> findInAny(Pattern,T)
   end;
 findInAny(_Pattern,[])-> [].
-
-
-
-%%
-%% findInName(Pattern, AdressBook) ->
-%%   case lists:filter(fun (X) -> regex(X#person.fullname#fullname.name ,Pattern) end, AdressBook) of
-%%     [Z | H] -> [Z]++H;
-%%     []  -> {error, "Soory, No contact with this substring"}
-%%   end.
-%%
-%% findInSurname(Pattern, AdressBook) ->
-%%   case lists:filter(fun (X) -> regex(X#person.fullname#fullname.surname ,Pattern) end, AdressBook) of
-%%     [Z|H] -> [Z]++H;
-%%     []  -> {error, "Sory, No contact with this substring"}
-%%   end.
-%%
-%% findInPhone(Pattern, AdressBook) ->
-%%   case lists:filter( fun(X) -> lists:any(fun (Y) -> regex(Y,Pattern) end, X#person.phone) end, AdressBook) of
-%%     [Z|H] -> [Z]++H;
-%%     []  -> {error, "Sory, No contact with this substring"}
-%%   end.
-%%
-%% findInEmail(Pattern, AdressBook) ->
-%%   case lists:filter( fun(X) -> lists:any(fun (Y) -> regex(Y,Pattern) end, X#person.mail) end, AdressBook) of
-%%     [Z | H ] -> [Z]++H;
-%%     []  -> {error, "Sory, No contact with this substring"}
-%%   end.
