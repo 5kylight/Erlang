@@ -21,7 +21,7 @@ getContact(Name, Surname, AddressBook) ->
 
 addContact(Name, Surname, AddressBook) ->
   case getContact(Name, Surname, AddressBook) of
-      [Z] -> {error, "Sorry, Contact with this name already exists"};
+      [_] -> {error, "Sorry, Contact with this name already exists"};
       [] -> AddressBook++[#person{fullname = #fullname{name=Name, surname = Surname}, phone = [], mail = []}]
   end.
 
@@ -29,9 +29,9 @@ addEmail(Name, Surname, Mail, AddressBook) ->
   addEmail(Name, Surname, Mail, AddressBook, getContact(Name, Surname, AddressBook),findByEmail(Mail,AddressBook)).
 addEmail(Name, Surname, Mail, AddressBook, X,Y) when length(X)==0, is_tuple(Y) ->
   AddressBook ++ [#person{fullname = #fullname{name=Name, surname = Surname}, phone = [], mail = [Mail]}];
-addEmail(Name, Surname, Mail,AddressBook, X,Y) when is_list(Y) ->
+addEmail( _, _, _, _, _,Y) when is_list(Y) ->
   {error, "Sorry, Contact with this email already exists"};
-addEmail(Name, Surname, Mail, AddressBook, X,Y) ->
+addEmail(_, _, Mail, AddressBook, X,_) ->
     case lists:any(fun (M) -> M == Mail end, (lists:last(X))#person.mail) of
       true -> {error, "Sorry, Contact with this email already exists"};
       false -> lists:delete(lists:last(X), AddressBook) ++ [(lists:last(X))#person{mail= (lists:last(X))#person.mail++[Mail]}]
@@ -41,9 +41,9 @@ addPhone(Name, Surname, Phone, AddressBook) ->
   addPhone(Name, Surname, Phone, AddressBook, getContact(Name, Surname, AddressBook), findByPhone(Phone,AddressBook)).
 addPhone(Name, Surname, Phone, AddressBook, X,Y) when length(X)==0, is_tuple(Y) ->
   AddressBook ++ [#person{fullname = #fullname{name=Name, surname = Surname}, phone = [Phone], mail = []}];
-addPhone(Name, Surname, Phone, AddressBook, X,Y) when is_list(Y) ->
+addPhone(_, _, _, _, _,Y) when is_list(Y) ->
   {error, "Sorry, Contact with this phone already exists"};
-addPhone(Name, Surname, Phone, AddressBook, X,Y) ->
+addPhone(_, _, Phone, AddressBook, X,_) ->
   case lists:any(fun (M) -> M == Phone end, (lists:last(X))#person.phone) of
     true -> {error, "Sorry,This contact has  this phone already in addressbook"};
     false -> lists:delete(lists:last(X), AddressBook) ++ [(lists:last(X))#person{phone= (lists:last(X))#person.phone++[Phone]}]
@@ -105,7 +105,7 @@ findInAny(Pattern,[H | T]) ->
     true -> [H]++findInAny(Pattern,T);
     false -> findInAny(Pattern,T)
   end;
-findInAny(Pattern,[])-> [].
+findInAny(_Pattern,[])-> [].
 
 
 

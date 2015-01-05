@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/addressBook/addressBook.iml" filepath="$PROJECT_DIR$/addressBook/addressBook.iml" />
       <module fileurl="file://$PROJECT_DIR$/myLists/myLists.iml" filepath="$PROJECT_DIR$/myLists/myLists.iml" />
       <module fileurl="file://$PROJECT_DIR$/rAddressBook/rAddressBook.iml" filepath="$PROJECT_DIR$/rAddressBook/rAddressBook.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rAddressBookOTP/rAddressBookOTP.iml" filepath="$PROJECT_DIR$/rAddressBookOTP/rAddressBookOTP.iml" />
     </modules>
   </component>
 </project>

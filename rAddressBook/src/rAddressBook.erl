@@ -23,6 +23,7 @@ start() ->
    register(server, spawn(rAddressBook,init,[])),
   {ok}.
 
+%% Fun for SuperVisor
 start_link() ->
   register(server, spawn_link(rAddressBook,init,[])),
   {ok}.
